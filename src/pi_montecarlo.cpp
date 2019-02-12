@@ -2,11 +2,11 @@
 
 #define CANVAS_SIZE 1000
 
-void pi_montecarlo(const std::vector<size_t> &iterations)
+void pi_montecarlo(const std::vector<size_t> &samples)
 {
-    for (size_t iter : iterations)
+    for (size_t sample : samples)
     {
-        DummyCanvas canvas(iter);
+        DummyCanvas canvas(sample);
         canvas.m_square = { CANVAS_SIZE };
         canvas.m_circle = { CANVAS_SIZE / 2 };
 
@@ -21,7 +21,7 @@ void pi_montecarlo(const std::vector<size_t> &iterations)
         // pi = 4 * dotsInside / totalDots
         // https://www.youtube.com/watch?v=ELetCV_wX_c
         double pi = 4 * ((double)canvas.m_insideCircle / canvas.m_points);
-        std::cout << "Sampling " << iter << ", result: " << pi << 
+        std::cout << "Sampling " << sample << ", result: " << pi << 
             " inside: " << canvas.m_insideCircle << " total generated points: " << canvas.m_points << std::endl;
     }
 }
